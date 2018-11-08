@@ -1,0 +1,23 @@
+<div class="container p-tb-20">
+	<div class="row content-center">
+		<%= form_tag("/questions/result", method: 'post', remote: true ) do %>
+			<h1>Quiz Tebak Kata</h1>
+			<input type="hidden" name="question[level]" value="<%= params[:level] %>">
+			<% @questions.each do |question| %>
+				<div id="question_<%= question[:id] %>" class="answer_space">
+					<h3><%= question[:random][rand(0..3)] %></h3>
+					<input type="text" name="question[<%= question[:id] %>]">
+					<p></p>
+				</div>
+			<% end %>
+
+			<br>
+
+			<div class="answer_space">
+				<button type="submit" class="btn btn-primary">Cek Kata</button>
+				<a href="/" class="btn btn-primary">Kembali</a>
+				<h5 id="info-message"></h5> 
+			</div>
+		<% end %>
+	</div>
+</div>

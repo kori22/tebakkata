@@ -1,0 +1,12 @@
+var grade = 0;
+
+<% @data.each do |data| %>
+	<% if data[:is_correct] %>
+		grade += 1;
+		$("#question_<%= data[:id] %> p").html("Jawaban Benar");
+	<% else %>
+		$("#question_<%= data[:id] %> p").html("Jawaban Salah");
+	<% end %>
+<% end %>
+
+$("#info-message").html("Score Anda : " + (grade * 20))
